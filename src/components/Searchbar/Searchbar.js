@@ -1,33 +1,47 @@
-import axios from 'axios';
+import React from "react"
 
-axios.defaults.baseURL = 'https://pixabay.com/api/';
-const TOTAL_HITS_KEY = 'Total hits'
-
-export class Pixabay {
-    key = '28194821-49041d995ecd04735d9e20d11'
-    page = 1;
-    per_page = 40;
-    query = '';
-    totalPages = 0;
-
-    async getPhotos() {
-        const params = {
-            page: this.page,
-            q: this.query,
-            per_page: this.per_page,
-            image_type: 'photo',
-            orientation: 'horizontal',
-            safesearch: true,
-        };
-
-        const urlAXIOS = `?key=${this.key}`;
-        const { data } = await axios.get(urlAXIOS, { params, });
-        localStorage.setItem(TOTAL_HITS_KEY, data.totalHits);
-        return data;
+class Searchbar extends React.Component {
+    state = {
+        value: '',
     }
 
-    hasMorePhotos() {
-        const freetotalHits = localStorage.getItem(TOTAL_HITS_KEY);
-        return this.page < this.totalPages / this.per_page && this.page < freetotalHits / this.per_page;
+    handleOnChange = e => {
+        this.setState({value: e.currentTarget.value})
+    };
+
+    onSubmit = e => {
+        e.preventDefault();
+        this.props.onSubmitForm(this.state);
+        this.reset();
+    };
+
+    reset = () => {
+        this.setState({
+            value: '',
+        })
+    }
+
+    render() {
+        return (
+        <header className="searchbar">
+            <form className="form" onSubmit={this.onSubmit}>
+                <button type="submit" className="button">
+                    <span className="button-label">Search</span>
+                </button>
+
+                <input
+                className="input"
+                type="text"
+                autocomplete="off"
+                autofocus
+                placeholder="Search images and photos"
+                value={this.state.value}
+                onChange={this.handleOnChange}
+                />
+            </form>
+        </header>
+        )
     }
 }
+
+export default Searchbar
