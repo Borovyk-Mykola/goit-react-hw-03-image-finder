@@ -9,9 +9,9 @@ class Searchbar extends React.Component {
         this.setState({value: e.currentTarget.value})
     };
 
-    onSubmit = e => {
+    onSubmitForm = e => {
         e.preventDefault();
-        this.props.onSubmitForm(this.state);
+        this.props.onSubmit(this.state);
         this.reset();
     };
 
@@ -23,8 +23,8 @@ class Searchbar extends React.Component {
 
     render() {
         return (
-        <header className="searchbar">
-            <form className="form" onSubmit={this.onSubmit}>
+        
+            <form className="form" onSubmitForm={this.onSubmitForm}>
                 <button type="submit" className="button">
                     <span className="button-label">Search</span>
                 </button>
@@ -32,14 +32,14 @@ class Searchbar extends React.Component {
                 <input
                 className="input"
                 type="text"
-                autocomplete="off"
-                autofocus
+                style={{autocomplete: 'off',
+                        autofocus: 'true'}}
                 placeholder="Search images and photos"
                 value={this.state.value}
                 onChange={this.handleOnChange}
                 />
             </form>
-        </header>
+        
         )
     }
 }

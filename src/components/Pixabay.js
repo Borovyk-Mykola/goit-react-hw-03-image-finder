@@ -3,7 +3,7 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://pixabay.com/api/';
 const TOTAL_HITS_KEY = 'Total hits'
 
-export class Pixabay {
+class Pixabay {
     key = '28194821-49041d995ecd04735d9e20d11'
     page = 1;
     per_page = 12;
@@ -31,3 +31,5 @@ export class Pixabay {
         return this.page < this.totalPages / this.per_page && this.page < freetotalHits / this.per_page;
     }
 }
+
+export default Pixabay

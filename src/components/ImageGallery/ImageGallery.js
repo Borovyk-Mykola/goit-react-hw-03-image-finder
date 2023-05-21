@@ -1,14 +1,19 @@
+import { nanoid } from "nanoid";
+import React from "react";
 
-const ImageGallery = () => (                                                             
-  <ul className="gallery">
-    <li className ="gallery-item">
-        <a href=''>
-            <div className ="gallery-item">
-              <img src="" alt="" loading="lazy" width="240"/>
-            </div>
-        </a>
-    </li>
-  </ul>
-);
+class ImageGallery extends React.Component { 
+  
+  id = nanoid()
+
+  render() {
+    return (
+    <ul className = "gallery" key={this.id}>
+      <li className = "gallery-item">
+          
+      </li>
+    </ul>
+    )
+  }
+};
 
 export default ImageGallery

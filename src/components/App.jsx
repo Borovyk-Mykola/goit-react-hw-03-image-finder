@@ -4,10 +4,13 @@ import ImageGallery from './ImageGallery/ImageGallery';
 
 export class App extends React.Component {
 state ={
-
+  value: '',
+  
 }
-onSubmitClick(){
 
+onSubmitClick = (data) => {
+  console.log(data)
+  
 }
 
 render() {
@@ -23,8 +26,9 @@ render() {
           
         }}
       >
-        <Searchbar onSubmitForm={this.onSubmitClick}/>
-          
+        <header className="searchbar">
+          <Searchbar onSubmit={this.onSubmitClick}/>
+        </header>
         <ImageGallery/>
 
       </div>
