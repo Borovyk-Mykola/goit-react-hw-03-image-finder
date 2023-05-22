@@ -9,8 +9,8 @@ state ={
 }
 
 onSubmitClick = (data) => {
-  console.log(data)
-  
+  if(data.value !== this.state.value)
+  this.setState({value: data.value})
 }
 
 render() {
@@ -26,10 +26,9 @@ render() {
           
         }}
       >
-        <header className="searchbar">
-          <Searchbar onSubmit={this.onSubmitClick}/>
-        </header>
-        <ImageGallery/>
+        <Searchbar onSubmit={this.onSubmitClick}/>
+        {this.state.value !== '' && 
+        <ImageGallery value={this.state.value}/>}
 
       </div>
     )
