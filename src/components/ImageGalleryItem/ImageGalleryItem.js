@@ -1,9 +1,9 @@
 import React from "react";
 
 const ImageGalleryItem = ({largeImageURL, webformatURL, tags}) => (
-    <li className="gallery-item">
+    <li className="ImageGalleryItem">
         <a href={largeImageURL}>
-            <img src={webformatURL} alt={tags} width="240" loading="lazy"/>
+            <img className="ImageGalleryItem-image" src={webformatURL} alt={tags} width="240" loading="lazy"/>
         </a>
     </li>
 );

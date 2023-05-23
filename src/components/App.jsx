@@ -15,12 +15,10 @@ onSubmitClick = (data) => {
 
 render() {
     return (
-      <div
+      <div className="App"
         style={{
           height: '100vh',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
+          display: 'block',
           fontSize: 40,
           color: '#010101',
           

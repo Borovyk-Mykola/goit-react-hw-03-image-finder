@@ -23,14 +23,14 @@ class Searchbar extends React.Component {
 
     render() {
         return (
-        <header className="searchbar">
-        <form className="form" onSubmit={this.onSubmitForm}>
-          <button type="submit" className="button">
-            <span className="button-label">Search</span>
+        <header className="Searchbar">
+        <form className="SearchForm" onSubmit={this.onSubmitForm}>
+          <button type="submit" className="SearchForm-button">
+            <span className="SearchForm-button-label">Search</span>
           </button>
       
           <input
-            className="input"
+            className="SearchForm-input"
             type="text"
             style={{autocomplete: 'off', autofocus: 'true'}}
             placeholder="Search images and photos"
