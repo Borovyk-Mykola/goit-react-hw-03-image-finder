@@ -4,8 +4,7 @@ import ImageGallery from './ImageGallery/ImageGallery';
 
 export class App extends React.Component {
 state ={
-  value: '',
-  
+  value: ''
 }
 
 onSubmitClick = (data) => {
@@ -21,13 +20,10 @@ render() {
           display: 'block',
           fontSize: 40,
           color: '#010101',
-          
-        }}
-      >
+        }}>
         <Searchbar onSubmit={this.onSubmitClick}/>
         {this.state.value !== '' && 
         <ImageGallery value={this.state.value}/>}
-
       </div>
     )
   }

@@ -25,9 +25,11 @@ class Modal extends React.Component {
     render(){
         const { largeImageURL, tags } = this.props.modalData;
         return (
-            <modal className="Modal" onClick={this.handleBackdropeClick}>
+            <div className="Overlay">
+                <div className="Modal" onClick={this.handleBackdropeClick}>
                 <img src={largeImageURL} alt={tags} />
-            </modal>
+                </div>
+            </div>
         )
     }
 }
