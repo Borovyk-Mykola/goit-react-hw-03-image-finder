@@ -1,11 +1,17 @@
 import React from "react";
 
-const ImageGalleryItem = ({largeImageURL, webformatURL, tags}) => (
-    <li className="ImageGalleryItem">
+const ImageGalleryItem = ({largeImageURL, tags, webformatURL, onImageClick }) => {
+    return (
+      <li className="ImageGalleryItem"
+        onClick={e => {
+          e.preventDefault();
+          onImageClick({ largeImageURL, tags });
+        }}>
         <a href={largeImageURL}>
-            <img className="ImageGalleryItem-image" src={webformatURL} alt={tags} width="240" loading="lazy"/>
+          <img src={webformatURL} alt={tags} width="240" loading="lazy"/>
         </a>
-    </li>
-);
-
+      </li>
+    );
+  };
+  
 export default ImageGalleryItem
