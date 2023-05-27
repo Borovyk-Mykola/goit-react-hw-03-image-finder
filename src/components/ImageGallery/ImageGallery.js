@@ -104,12 +104,12 @@ class ImageGallery extends React.Component {
               />
             ))}
           </ul>
-          {images.length > 0 && status !== 'pending' && page <= totalPages && (
+          {images.length > 0 && status !== 'pending' && page <= totalPages && 
             <Button onClick={this.handleLoadMore}>Load More</Button>
-          )}
-          {isShowModal && (
-            <Modal modalData={modalData} onModalClose={this.handleModalClose} />
-          )}
+          }
+          {isShowModal && 
+            <Modal modalData={modalData} onModalClose={this.handleModalClose}/>
+          }
         </div>
       );
     }
