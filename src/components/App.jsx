@@ -7,8 +7,7 @@ state ={
   value: ''
 }
 
-onSubmitClick = (data) => {
-  if(data.value !== this.state.value)
+onSubmitClick = data => {
   this.setState({value: data.value})
 }
 
@@ -22,8 +21,7 @@ render() {
           color: '#010101',
         }}>
         <Searchbar onSubmit={this.onSubmitClick}/>
-        {this.state.value !== '' && 
-        <ImageGallery value={this.state.value}/>}
+        <ImageGallery value={this.state.value}/>
       </div>
     )
   }

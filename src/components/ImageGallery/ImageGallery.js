@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 import ImageGalleryItem from "components/ImageGalleryItem/ImageGalleryItem";
-import imagesAPI from '../API'
+import Api from '../API'
 import Loader from '../Loader/Loader'
 import Button from '../Button/Button'
 import Modal from '../Modal/Modal';
@@ -28,10 +28,10 @@ class ImageGallery extends React.Component {
     totalPages: 0,
 
     isShowModal: false,
-    modalData: { img: 'Go', tags: '' },
+    modalData: { img: '', tags: '' },
   };
 
-  static getDerivedStateFromProps(nextProps, prevState) {
+  static getStartProps(nextProps, prevState) {
     if (prevState.value !== nextProps.value) {
       return { page: 1, value: nextProps.value };
     }
@@ -39,22 +39,23 @@ class ImageGallery extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { page } = this.state;
+    const { page, error } = this.state;
     const prevValue = prevProps.value;
     const nextValue = this.props.value;
 
     if (prevValue !== nextValue || prevState.page !== page) {
       this.setState({ status: Status.PENDING });
 
-      if (this.state.error) {
+      if (error) {
         this.setState({ error: null });
       }
-      imagesAPI
+      Api
         .getImages(nextValue, page)
         .then(images => {
           this.setState(prevState => ({
-            images:
-              page === 1 ? images.hits : [...prevState.images, ...images.hits],
+            images: page === 1 ? 
+              images.hits : 
+              [...prevState.images, ...images.hits],
             status: Status.RESOLVED,
             totalPages: Math.floor(images.totalHits / 12),
           }));
@@ -83,19 +84,15 @@ class ImageGallery extends React.Component {
       return <Loader/>;
     }
     if (status === 'rejected') {
-      return <p message={error.message} />;
+      return alert(`${error.message}`);
     }
-    if (images.length === 0) {
-      return (
-        <p
-          message={`Oops... there are no images matching your search... `}
-        />
-      );
+    if (status === 'resolved' && images.length === 0) {
+      return alert('Oops... there are no images matching your search... ');
     }
 
     if (status === 'resolved') {
       return (
-        <>
+        <div>
           <ul className = "ImageGallery">
             {images.map(image => (
               <ImageGalleryItem
@@ -113,7 +110,7 @@ class ImageGallery extends React.Component {
           {isShowModal && (
             <Modal modalData={modalData} onModalClose={this.handleModalClose} />
           )}
-        </>
+        </div>
       );
     }
   }

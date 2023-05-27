@@ -1,4 +1,5 @@
 import React from "react"
+import Svg from './SearchSvg'
 
 class Searchbar extends React.Component {
     state = {
@@ -24,22 +25,22 @@ class Searchbar extends React.Component {
     render() {
         return (
         <header className="Searchbar">
-        <form className="SearchForm" onSubmit={this.onSubmitForm}>
-          <button type="submit" className="SearchForm-button">
-            <span className="SearchForm-button-label">Search</span>
-          </button>
-      
-          <input
-            className="SearchForm-input"
-            type="text"
-            style={{autocomplete: 'off', autofocus: 'true'}}
-            placeholder="Search images and photos"
-            value={this.state.value}
-            onChange={this.handleOnChange}
-          />
-        </form>
-      </header>
-        )
+          <form className="SearchForm" onSubmit={this.onSubmitForm}>
+            <button type="submit" className="SearchForm-button">
+              <Svg className="SearchForm-button-label"/>
+            </button>
+        
+            <input
+              className="SearchForm-input"
+              type="text"
+              style={{autocomplete: 'off', autofocus: 'true'}}
+              placeholder="Search images and photos"
+              value={this.state.value}
+              onChange={this.handleOnChange}
+            />
+          </form>
+        </header>
+      )
     }
 }
 

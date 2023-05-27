@@ -1,10 +1,10 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 
-const modalRoot = document.querySelector('#modal-root');
+const modalRoot = document.getElementById('modal-root');
 
-class Modal extends Component {
+class Modal extends React.Component {
   static propTypes = {
     modalData: PropTypes.shape({
       largeImageURL: PropTypes.string.isRequired,
