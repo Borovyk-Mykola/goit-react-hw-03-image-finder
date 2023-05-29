@@ -45,12 +45,10 @@ class ImageGallery extends React.Component {
 
     if (prevValue !== nextValue || prevState.page !== page) {
       this.setState({ status: Status.PENDING });
-
       if (error) {
         this.setState({ error: null });
       }
-      Api
-        .getImages(nextValue, page)
+      Api.getImages(nextValue, page)
         .then(images => {
           this.setState(prevState => ({
             images: page === 1 ? 
@@ -60,7 +58,7 @@ class ImageGallery extends React.Component {
             totalPages: Math.floor(images.totalHits / 12),
           }));
         })
-        .catch(error => this.setState({ error, status: Status.REJECTED }));
+      .catch(error => this.setState({ error, status: Status.REJECTED }));
     }
   }
 

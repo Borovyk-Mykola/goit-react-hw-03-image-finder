@@ -16,8 +16,6 @@ const getImages = (searchText, page = 1) => {
   });
 };
 
-const api = {
-  getImages,
-};
+const api = {getImages};
 
 export default api
